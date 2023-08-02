@@ -1,0 +1,15 @@
+{% extends 'blog_turma/base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'post_edit' pk=post.pk %}"><ion-icon name="pencil-outline"></ion-icon> Editar</a>
+    {% endif %}
+
+    <p> <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></p>
+    <p> {{ post.text|safe }}</p>
+    <span> {{ post.author }} </span>
+
+    {% if post.image %}
+        <img src="{{post.image.url}}" alt="">
+    {% endif %}
+
+{% endblock %}
